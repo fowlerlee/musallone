@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "musallone_backend": {
+      "candid": "src/musallone_backend/musallone_backend.did",
+      "package": "musallone_backend",
+      "type": "rust"
+    },
+    "musallone_frontend": {
+      "dependencies": [
+        "musallone_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/musallone_frontend/src/index.html"
+      },
+      "source": [
+        "src/musallone_frontend/assets",
+        "dist/musallone_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
