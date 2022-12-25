@@ -1,3 +1,60 @@
-service : {
-    "greet": (text) -> (text) query;
-}
+type anon_class_15_1 = service {
+    greet: (text) -> (text) query;
+    get_number_of_contracts: () -> (nat64) query;
+    add_contract: (text, text) -> (LResult);
+    transfer: (TransferArgs) -> (LResult);
+};
+
+type Contract = record {
+    id: nat;
+    timestamp: nat;
+    creator: principal;
+    voters: vec principal;
+    status: ContractState;
+    contract_name: text;
+    contract_text: text;
+};
+
+type PrincipalName = text;
+type Tokens = nat;
+
+type Account = record {
+    owner: principal;
+    tokens: Tokens;
+};
+
+type TransferArgs = record {
+    to: principal;
+    amount: Tokens;
+};
+
+type ContractState = variant {
+    Open;
+    Closed;
+    Succeeded;
+    Failed: text;
+};
+
+type LResult = variant {
+    Err: text;
+    Ok: text;
+};
+
+type TransferResult = variant {
+    Err: text;
+    Ok: text;
+};
+
+type SystemParams = record {
+    transfer_fee: Tokens;
+    contract_unit: Tokens;
+    contract_submission_deposit: Tokens;
+};
+
+type MusallStableStorage = record {
+    accounts: vec Account;
+    contracts: vec Contract;
+    system_params: SystemParams;
+};
+
+service : () -> anon_class_15_1

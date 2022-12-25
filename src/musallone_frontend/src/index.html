@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>musallone</title>
     <base href="/" />
-    <link rel="icon" href="favicon.ico" />
     <link type="text/css" rel="stylesheet" href="main.css" />
   </head>
   <body>
     <main>
-      <img src="logo2.svg" alt="DFINITY logo" />
       <br />
       <br />
       <form action="#">
@@ -19,6 +17,12 @@
         <button type="submit">Click Me!</button>
       </form>
       <section id="greeting"></section>
+      <form action="#">
+        <label for="contract">Enter contract title: &nbsp;</label>
+        <input id="contract_title" alt="Contract" type="text" />
+        <input id="contract_specs" alt="Contract" type="text" />
+        <button type="create">Create contract!</button>
+      </form>
     </main>
   </body>
 </html>
