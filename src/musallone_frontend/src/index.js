@@ -29,10 +29,11 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
   // Interact with foo actor, calling the greet method
   const contract_item = await musallone_backend.add_contract(contract_title, contract_specs);
+  console.log("contract: " ,contract_item.Ok )
 
   button.removeAttribute("disabled");
 
-  document.getElementById("contract_item").innerText = contract_item;
+  document.getElementById("contract_item").innerText = contract_item.Ok;
 
   return false;
 });
