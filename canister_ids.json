@@ -1,14 +1,8 @@
 {
-  "fileupload": {
-    "ic": "xxxxx-6qaaa-aaaan-qakfq-cai"
+  "musallone_backend": {
+    "ic": "bf6zr-wyaaa-aaaag-aaneq-cai"
   },
-  "nova_one": {
-    "ic": "xxxxx-7yaaa-aaaan-qakga-cai"
-  },
-  "nova_one_assets": {
-    "ic": "xxxxx-ryaaa-aaaaj-aiq7q-cai"
-  },
-    "internet_identity": {
-    "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+  "musallone_frontend": {
+    "ic": "2f3dc-hiaaa-aaaaj-aifdq-cai"
   }
 }
