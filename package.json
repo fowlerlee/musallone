@@ -42,8 +42,15 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@emotion/cache": "^11.9.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.2",
+    "@mui/material": "^5.8.6",
+    "@mui/styled-engine": "^5.8.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.41.1",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5"
   }
