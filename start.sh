@@ -2,4 +2,4 @@ killall dfx replica
 rm -rf .dfx
 dfx start --background --clean
 npm install
-dfx deploy --no-wallet 
+dfx deploy --network=local --no-wallet 
