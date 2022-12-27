@@ -16,7 +16,7 @@ export default function SimpleForm() {
   async function doGreet() {
     const greeting = await musallone_backend.greet(name)
     console.log("greeting: ", greeting);
-    const contract = await musallone_backend.add_contract(name, details);
+    const contract = await musallone_backend.add_contract(name, details, parseInt(tokens));
     console.log("contract:" , contract.Ok)
     setMessage(contract.Ok);
   }

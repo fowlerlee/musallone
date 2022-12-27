@@ -37,6 +37,7 @@ pub struct Contract {
     pub status: ContractState,
     pub contract_name: String,
     pub contract_text: String,
+    pub tokens: u64,
 }
 
 impl Add for Tokens {

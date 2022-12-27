@@ -104,7 +104,7 @@ impl MusallService {
         .insert(id, tokens);
     }
 
-    pub fn add_contracts(&mut self, contract_text: String, contract_name: String) -> LResult<String, String>{
+    pub fn add_contracts(&mut self, contract_text: String, contract_name: String, tokens: u64) -> LResult<String, String>{
         let contract_id = NEXT_CONTRACT_ID.with(|counter| {
             let mut writer = counter.borrow_mut();
             *writer += 1;
@@ -119,6 +119,7 @@ impl MusallService {
             status: ContractState::Open,
             contract_name: contract_name,
             contract_text: contract_text,
+            tokens,
 
         };
         if let Some(_x) = self.contracts.get(&contract_id) {

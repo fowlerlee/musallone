@@ -143,7 +143,7 @@ fn update_contract_state(contract_id: u64, new_state: ContractState){
 */
 
 #[update(name = "add_contract")]
-fn add_contract(contract_name: String, contract_notes: String) -> LResult<String, String> {
+fn add_contract(contract_name: String, contract_notes: String, tokens: u64) -> LResult<String, String> {
     let user: Principal = caller();
     let user_str: String = user.to_string();
     let contract_id = NEXT_CONTRACT_ID.with(|counter| {
@@ -166,6 +166,7 @@ fn add_contract(contract_name: String, contract_notes: String) -> LResult<String
                 voters: (vec![caller()]),
                 contract_name: contract_name.clone(),
                 contract_text: contract_notes.clone(),
+                tokens,
             },
         );
     });
@@ -181,6 +182,7 @@ fn add_contract(contract_name: String, contract_notes: String) -> LResult<String
                 status: (ContractState::Open),
                 contract_name: (contract_name.clone()),
                 contract_text: (contract_notes.clone()),
+                tokens,
             },
         );
     });
@@ -193,7 +195,7 @@ mod tests {
 
     #[test]
     fn test_contracts_not_zero() {
-        add_contract("contract_name".to_string(), "contract_notes".to_string());
+        add_contract("contract_name".to_string(), "contract_notes".to_string(), 100u64);
         assert_eq!(get_number_of_contracts(), 1)
     }
 
@@ -201,7 +203,7 @@ mod tests {
     #[ignore]
     fn test_contracts_add() {
         assert_eq!(
-            add_contract(String::from("lleeee"), String::from("thhthte")),
+            add_contract(String::from("lleeee"), String::from("thhthte"), 100u64),
             LResult::Ok("Contract created and added to Musall".to_string())
         )
     }
