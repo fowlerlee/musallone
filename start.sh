@@ -3,4 +3,5 @@ rm -rf .dfx
 npm install
 dfx start --background --clean
 dfx deploy
+npm start
 

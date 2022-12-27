@@ -12,13 +12,27 @@ export default function SimpleForm() {
   const [details, setDetails] = React.useState('');
   const [tokens, setTokens] = React.useState('');
   const [message, setMessage] = React.useState('');
+  const [numbContracts, setNumbContracts] = React.useState(0);
+  const [allContracts, setAllContracts] = React.useState([]);
 
-  async function doGreet() {
+  async function doContract() {
     const greeting = await musallone_backend.greet(name)
-    console.log("greeting: ", greeting);
+    console.log("name: ", greeting);
     const contract = await musallone_backend.add_contract(name, details, parseInt(tokens));
-    console.log("contract:" , contract.Ok)
+    console.log("response:" , contract.Ok)
     setMessage(contract.Ok);
+  }
+
+  async function doGetContracts() {
+    const numbContracts = await musallone_backend.get_number_of_contracts()
+    console.log("number of contracts: ", numbContracts);
+    setNumbContracts(numbContracts);
+  }
+
+  async function getAllContracts() {
+    const allContracts = await musallone_backend.get_all_contracts()
+    console.log("all contracts: ", Object.entries(allContracts));
+    setAllContracts(allContracts);
   }
   
   return (
@@ -32,7 +46,7 @@ export default function SimpleForm() {
        autoComplete="off"
      > 
       <Typography variant="h3" sx={{ mb: 3 }}>
-          Welcome to Musall alpha
+          Welcome to MusallDAO
       </Typography>
         <p>
             {" "}
@@ -56,8 +70,11 @@ export default function SimpleForm() {
       <TextField id="filled-basic" label="Contract details" variant="filled" multiline
           rows={8} onChange={(ev) => setDetails(ev.target.value)}/>
       <TextField id="filled-basic" label="Total tokens to share" variant="filled" onChange={(ev) => setTokens(ev.target.value)}/>
-      <Button variant="contained" color="success" onClick={doGreet}> Submit </Button>
+      <Button variant="contained" color="success" onClick={doContract}> Submit </Button>
+      <Button variant="outlined"  onClick={doGetContracts}> Count contracts </Button>
+      {/* <Button variant="contained" onClick={getAllContracts}> Get all contracts </Button> */}
       <div> MusallDAO response: <span style={{ color: "green" }}>{message}</span> </div>
+      <div> Number of contracts created: <span style={{ color: "green" }}>{Number(numbContracts)}</span> </div>
     </Box>
     </>
   );

@@ -48,16 +48,16 @@ fn caller() -> Principal {
 //     SERVICE.with(|service| *service.borrow_mut() = init_service);
 // }
 
-#[ic_cdk_macros::query]
+#[ic_cdk_macros::query(name = "get_number_of_contracts")]
 fn get_number_of_contracts() -> usize {
-    CONTRACTS.with(|service| service.borrow().keys().len())
+    // CONTRACTS.with(|service| service.borrow().keys().len())
+    SERVICE.with(|s|s.borrow_mut().contracts.len() )
 }
 
-// #[ic_cdk_macros::query]
-// fn get_all_contracts() {
-//     CONTRACTS.with(|cons|{
-//         let values = cons.get_mut();})
-// }
+#[ic_cdk_macros::query(name = "get_all_contracts")]
+fn get_all_contracts() -> Vec<Contract> {
+    SERVICE.with(|s|s.borrow_mut().list_contracts())
+}
 
 // #[query]
 // #[ic_cdk::export::candid::candid_method(query)]

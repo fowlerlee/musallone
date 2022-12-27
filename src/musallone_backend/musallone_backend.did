@@ -2,6 +2,7 @@ type anon_class_15_1 = service {
     greet: (text) -> (text) query;
     get_number_of_contracts: () -> (nat64) query;
     add_contract: (text, text, nat64) -> (LResult);
+    get_all_contracts: () -> (vec Contract);
     transfer: (TransferArgs) -> (LResult);
 };
 
