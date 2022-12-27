@@ -38,6 +38,7 @@ export default function SimpleForm() {
   
   return (
     <> 
+    <Container fixed>
     <Box
        component="form"
        sx={{
@@ -58,6 +59,7 @@ export default function SimpleForm() {
             {" "}
         </p>
     </Box>
+    </Container>
   
     <Box
       component="form"
