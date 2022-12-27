@@ -25,14 +25,15 @@ export default function SimpleForm() {
 
   async function doGetContracts() {
     const numbContracts = await musallone_backend.get_number_of_contracts()
-    console.log("number of contracts: ", numbContracts);
+    console.log("number of contracts: ", parseInt(numbContracts));
     setNumbContracts(numbContracts);
   }
 
   async function getAllContracts() {
     const allContracts = await musallone_backend.get_all_contracts()
-    console.log("all contracts: ", Object.entries(allContracts));
-    setAllContracts(allContracts);
+    // Array(allContracts).map(i => console.log(parseInt(i)));
+    console.log("all contracts: ", [...allContracts]);
+    setAllContracts([...allContracts]);
   }
   
   return (
@@ -72,7 +73,7 @@ export default function SimpleForm() {
       <TextField id="filled-basic" label="Total tokens to share" variant="filled" onChange={(ev) => setTokens(ev.target.value)}/>
       <Button variant="contained" color="success" onClick={doContract}> Submit </Button>
       <Button variant="outlined"  onClick={doGetContracts}> Count contracts </Button>
-      {/* <Button variant="contained" onClick={getAllContracts}> Get all contracts </Button> */}
+      <Button variant="contained" onClick={getAllContracts}> Get all contracts </Button>
       <div> MusallDAO response: <span style={{ color: "green" }}>{message}</span> </div>
       <div> Number of contracts created: <span style={{ color: "green" }}>{Number(numbContracts)}</span> </div>
     </Box>

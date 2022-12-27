@@ -2,22 +2,23 @@ type anon_class_15_1 = service {
     greet: (text) -> (text) query;
     get_number_of_contracts: () -> (nat64) query;
     add_contract: (text, text, nat64) -> (LResult);
-    get_all_contracts: () -> (vec Contract);
+    get_all_contracts: () -> (vec Contract) query;
     transfer: (TransferArgs) -> (LResult);
 };
 
 type Contract = record {
-    id: nat;
-    timestamp: nat;
+    id: nat64;
+    timestamp: nat64;
     creator: principal;
     voters: vec principal;
     status: ContractState;
     contract_name: text;
     contract_text: text;
+    tokens: nat64;
 };
 
 type PrincipalName = text;
-type Tokens = nat;
+type Tokens = nat64;
 
 type Account = record {
     owner: principal;
