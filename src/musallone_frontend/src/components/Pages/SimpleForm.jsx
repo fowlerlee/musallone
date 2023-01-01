@@ -17,6 +17,7 @@ export default function SimpleForm() {
   const [message, setMessage] = React.useState('');
   const [numbContracts, setNumbContracts] = React.useState(0);
   const [allContracts, setAllContracts] = React.useState([]);
+  const [url, setUrl] = React.useState('');
 
   async function ipfsActor(file) {
     let ipfs = await create();
@@ -26,7 +27,20 @@ export default function SimpleForm() {
     console.log("results:" , results)
     // let string = await ipfs.cat(results.path)
     console.log("returned data:", ipfs.cat(results.path))
+    setUrl(ipfs.cat(results.path))
+    
+    //   const obj = { hello: 'world' }
+    //   const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
+    
+    //   const files = [
+    //     new File(['contents-of-file-1'], 'plain-utf8.txt'),
+    //     new File([blob], 'hello.json')
+    //   ]
 
+    // const x = await ipfs.files.mkdir('/my/directory/example', { parents: true })
+    // await ipfs.files.write('/my/directory/example', files[0], { create: true })
+    // console.log("my data:", await ipfs.files.stat('/example'))
+    // console.log("my data:", await ipfs.files.ls('/example'))
     // for (const { cid } of results) {
     //   // CID (Content IDentifier) uniquely addresses the data
     //   // and can be used to get it again.
