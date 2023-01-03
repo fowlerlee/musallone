@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { CardHeader, Container, Grid, Stack, Typography } from '@mui/material';
 import { Web3Storage } from 'web3.storage'
 import  {create}  from 'ipfs-core';
+import  TopBar  from "../Molecules/TopBar/TopBar";
 
 
 
@@ -105,6 +106,7 @@ export default function SimpleForm() {
   
   return (
     <> 
+    <TopBar/>
     <Container fixed>
     <Box
        component="form"
@@ -114,15 +116,18 @@ export default function SimpleForm() {
        noValidate
        autoComplete="off"
      > 
+      <br></br>
+      <br></br>
+      <br></br>
       <Typography variant="h3" sx={{ mb: 3 }}>
-          Welcome to MusallDAO
+          Welcome to shared ownership
       </Typography>
         <p>
             {" "}
             Submit a contract to the MusallDAO store{" "}
             <br></br>
             <br></br>
-            Enter a name, details and its number of tokens to share in contract.
+            Enter the name, abstract and its number of tokens to share in the contract.
             {" "}
         </p>
     </Box>
@@ -137,9 +142,7 @@ export default function SimpleForm() {
       autoComplete="off"
     > 
 
-        {/* <input
-          type="file"
-          onChange={makeAndStoreFiles} /> */}
+      <input type="file" width="48" height="40" placeholder='browse file upload' />
 
       <Button variant="contained" onClick={ipfsActor}> Upload data </Button>
 
